@@ -43,7 +43,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.fruites)
     return (
       <div className="App">
       <h1> Check and Uncheck All Example </h1>
