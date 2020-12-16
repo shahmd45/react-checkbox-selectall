@@ -5,10 +5,12 @@ import  CheckBox  from './CheckBox'
 class App extends Component {
   state = {
       fruites: [
-        {id: 1, value: "banana", isChecked: false},
-        {id: 2, value: "apple", isChecked: false},
-        {id: 3, value: "mango", isChecked: false},
-        {id: 4, value: "grape", isChecked: false}
+        {id: 1, value: "Banana", isChecked: false},
+        {id: 2, value: "Apple", isChecked: false},
+        {id: 3, value: "Mango", isChecked: false},
+        {id: 4, value: "Grape", isChecked: false},
+        {id: 5, value: "Carrot", isChecked: false},
+        {id: 6, value: "Water Melon", isChecked: false}
       ],
       isCheckedAll: false
   }
@@ -37,18 +39,43 @@ class App extends Component {
     }
   }
 
+  onCheckHandler = () => {
+  }
+
   render() {
+    console.log(this.state.fruites)
     return (
       <div className="App">
       <h1> Check and Uncheck All Example </h1>
       <ul>
-      <input type="checkbox" onClick={this.handleAllChecked}  value="checkedall" checked={this.state.isCheckedAll}/> All
+        <input
+            type="checkbox" 
+            onClick={this.handleAllChecked}
+            onChange={this.onCheckHandler}
+            value="checkedall"
+            checked={this.state.isCheckedAll}
+        /> <span>All</span>
         {
           this.state.fruites.map((fruite) => {
-            return (<CheckBox key={fruite.id} handleCheckChieldElement={this.handleCheckChieldElement} {...fruite} />)
+            return (
+            <CheckBox 
+              key={fruite.id}
+              handleCheckChieldElement={this.handleCheckChieldElement}
+              onCheckHandler={this.onCheckHandler}
+              {...fruite} 
+              />
+            )
           })
         }
         </ul>
+        <h2> Selected Fruites in the basket </h2>
+        <div className="selected__Items">
+          {this.state.fruites.map(item => {
+            return (
+              <p key={item.id}>{item.isChecked && item.value}</p>
+            )
+          })}
+        </div>
       </div>
     );
   }

@@ -9,7 +9,8 @@ class Checkbox extends Component {
                 onClick={this.props.handleCheckChieldElement} 
                 type="checkbox" 
                 checked={this.props.isChecked} 
-                value={this.props.value} 
+                value={this.props.value}
+                onChange={this.props.onCheckHandler}
              /> 
              <label>
              {this.props.value}
